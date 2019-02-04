@@ -13,6 +13,8 @@
 		08D069D22201734900207AF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08D069D12201734900207AF1 /* Assets.xcassets */; };
 		08D069D52201734900207AF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08D069D32201734900207AF1 /* LaunchScreen.storyboard */; };
 		08D069E02201734900207AF1 /* unitConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D069DF2201734900207AF1 /* unitConverterTests.swift */; };
+		08D069EF2201749300207AF1 /* converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D069EE2201749300207AF1 /* converter.swift */; };
+		08D069FB2201B84400207AF1 /* converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D069EE2201749300207AF1 /* converter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 		08D069DB2201734900207AF1 /* unitConverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = unitConverterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		08D069DF2201734900207AF1 /* unitConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = unitConverterTests.swift; sourceTree = "<group>"; };
 		08D069E12201734900207AF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08D069EE2201749300207AF1 /* converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = converter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				08D069CA2201734800207AF1 /* AppDelegate.swift */,
-				08D069CC2201734800207AF1 /* ViewController.swift */,
-				08D069CE2201734800207AF1 /* Main.storyboard */,
+				08D069EC2201738700207AF1 /* View */,
+				08D069EB2201736D00207AF1 /* ViewModel */,
 				08D069D12201734900207AF1 /* Assets.xcassets */,
 				08D069D32201734900207AF1 /* LaunchScreen.storyboard */,
 				08D069D62201734900207AF1 /* Info.plist */,
@@ -94,6 +97,23 @@
 				08D069E12201734900207AF1 /* Info.plist */,
 			);
 			path = unitConverterTests;
+			sourceTree = "<group>";
+		};
+		08D069EB2201736D00207AF1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				08D069EE2201749300207AF1 /* converter.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		08D069EC2201738700207AF1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				08D069CE2201734800207AF1 /* Main.storyboard */,
+				08D069CC2201734800207AF1 /* ViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +219,7 @@
 			files = (
 				08D069CD2201734800207AF1 /* ViewController.swift in Sources */,
 				08D069CB2201734800207AF1 /* AppDelegate.swift in Sources */,
+				08D069EF2201749300207AF1 /* converter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08D069FB2201B84400207AF1 /* converter.swift in Sources */,
 				08D069E02201734900207AF1 /* unitConverterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,6 +385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C2FPZNSBZQ;
 				INFOPLIST_FILE = unitConverter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -370,7 +393,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yoozz.unitConverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -381,6 +404,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C2FPZNSBZQ;
 				INFOPLIST_FILE = unitConverter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -388,7 +412,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yoozz.unitConverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

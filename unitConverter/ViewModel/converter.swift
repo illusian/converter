@@ -9,70 +9,51 @@
 import Foundation
 // Convert between the following temperature units: Kelvin (K), Celsius (°C) and Fahrenheit (°F)
 
-class temperatureClass {
+class convertClass {
+    var convtype: String
     var inputVal: Double
     var inputUnit: String
     var outputUnit: String
 
-    let celsius = UnitTemperature.celsius
-    let kelvin = UnitTemperature.kelvin
-    let fahrenheit = UnitTemperature.fahrenheit
-    
-    init?(inputVal: Double, inputUnit: String, outputUnit: String) {
+    init?(type: String, inputVal: Double, inputUnit: String, outputUnit: String) {
+        self.convtype = type
         self.inputVal = inputVal
         self.inputUnit = inputUnit
         self.outputUnit = outputUnit
     }
     
-    func setinputVal() -> Measurement<UnitTemperature> {
-        switch inputUnit {
-        case "Kelvin":
-            return Measurement(value: inputVal, unit: kelvin)
-        case "Fahrenheit":
-            return Measurement(value: inputVal, unit: fahrenheit)
-        default: //"c"
-            return Measurement(value: inputVal, unit: celsius)
-        }
-    }
-
-    func getoutputTypeConveted() -> UnitTemperature {
-        switch outputUnit {
-        case "Kelvin":
-            return kelvin
-        case "Fahrenheit":
-            return fahrenheit
-        default: //"c"
-            return celsius
+    func setUnit(unit: String) -> AnyObject {
+        if convtype == "t" {
+            switch unit {
+            case "Kelvin":
+                return UnitTemperature.kelvin as UnitTemperature
+            case "Fahrenheit":
+                return UnitTemperature.fahrenheit as UnitTemperature
+            default: //"c"
+                return UnitTemperature.celsius as UnitTemperature
+            }
+        } else { //"v"
+            switch unit {
+            case "gallons":
+                return UnitVolume.gallons as UnitVolume
+            case "milliliters":
+                return UnitVolume.milliliters as UnitVolume
+            default: //"liters"
+                return UnitVolume.liters as UnitVolume
+            }
         }
     }
     
     func convert() -> String {
-        let inputValConverted: Measurement<UnitTemperature> = setinputVal()
-        
-        let OutputValueUnitConverted: UnitTemperature = getoutputTypeConveted()
-        let converted = inputValConverted.converted(to: OutputValueUnitConverted)
-        
-        return MeasurementFormatter.string(converted)
-        
-        let measurementFormatter = MeasurementFormatter()
-        measurementFormatter.locale = Locale(identifier: "en_US")
-        measurementFormatter.unitOptions = .providedUnit
-        measurementFormatter.numberFormatter.maximumFractionDigits = 0
-        measurementFormatter.unitStyle = .long
-        
-        let meters: Double = 1839
-        let localizedString = measurementFormatter.string(from: Measurement(value: meters.metersToFeet, unit: UnitLength.feet))
-        
-        localizedString //   // "6,033 feet"
+        let measurementFormat = MeasurementFormatter()
+        measurementFormat.locale = Locale(identifier: "en_US")
+        measurementFormat.unitOptions = .providedUnit
+        measurementFormat.numberFormatter.maximumFractionDigits = 0
+        measurementFormat.unitStyle = .long
+
+        let convertedVal = Measurement(value: inputVal, unit: setUnit(unit: inputUnit) as! Dimension).converted(to: setUnit(unit: outputUnit) as! Dimension).value
+        let localizedString = measurementFormat.string(from: Measurement(value: convertedVal, unit: setUnit(unit: outputUnit) as! Unit))
+        return localizedString
     }
 
-}
-
-extension Double {
-    var kelvintofahrenheit: Double {
-        return Measurement(value: self, unit: UnitTemperature.kelvin).converted(to: UnitTemperature.fahrenheit).value
-    }
-    var metersToFeet: Double {
-        return Measurement(value: self, unit: UnitLength.meters).converted(to: UnitLength.feet).value
-    }
 }
